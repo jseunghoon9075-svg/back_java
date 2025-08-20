@@ -78,6 +78,7 @@ public class ForTask2 {
 				}
 				if (value > max) {
 					max = value;
+					System.out.println("max < value = "+max);
 				}
 			}
 		}
