@@ -14,12 +14,12 @@ package classPractice;
 //		System.out.println("Hello");
 //	}
 //}
-
-class Student {
-	void introduce(String name) {
-		System.out.println("안녕하세요, 제 이름은" + name + "입니다.");
-	}
-}
+//
+//class Student {
+//	void introduce(String name) {
+//		System.out.println("안녕하세요, 제 이름은" + name + "입니다.");
+//	}
+//}
 public class Practice1 {
 	public static void main(String[] args) {
 //		Speaker speaker = new Speaker();
@@ -29,9 +29,10 @@ public class Practice1 {
 //		for(int i = 0; i < 3; i++) {
 //			p.printHello();
 //		}
-		Student student1 = new Student();
-		Student student2 = new Student();
-		student1.introduce("철수");
-		student2.introduce("영희");
+//		Student student1 = new Student();
+//		Student student2 = new Student();
+//		student1.introduce("철수");
+//		student2.introduce("영희");
+		System.out.println(15000 * (10 * 0.04));
 	}
 }
