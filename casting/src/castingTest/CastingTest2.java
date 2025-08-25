@@ -29,7 +29,9 @@ public class CastingTest2 {
 	public static void main(String[] args) {
 		Car matiz = new Car();
 		SuperCar ferrari = new SuperCar();
+//		업스캐팅
 		Car noOptionFerrari = new SuperCar();
+//		다운캐스팅
 		SuperCar optionFerrari = (SuperCar) noOptionFerrari;
 
 //      객체 instanceof 타입: 참 또는 거짓
