@@ -10,17 +10,20 @@ public class CastingPractice {
 	// 
 		public static void main(String[] args) {
 //			부모클래스 유저에 자식클래스 마켓맴버를 업캐스팅
-			User mb1 = new MarketMember("홍길동","010-1234-5678", 20_000, 2_000);
-			User mb2 = new MarketNonMember("김길동","010-1212-3434", 110_000, 5_000);
 			Market market = new Market();
 			Product product = new Product();
+			User member = new MarketMember("홍길동","010-1234-5678", 10_000, 2_000, 30);
+			MarketMember members = (MarketMember)member;
+			User user = new MarketNonMember("김길동","010-1212-3434", 110_000, 5_000, 5);
 			Product[] productArr = {
 					new Product("아메리카노", 2000, 3, 1),
-					new Product("카페라테", 5500, 4, 1),
+					new Product("카페라테", 5000, 4, 1),
 					new Product("카페모카", 5500, 7, 1),
 					new Product("아이스티", 5000, 5, 1),
 					new Product("홍차", 4000, 10, 1),
 					};
+			
 			market.register(productArr);
+			market.sell(productArr, member,members,"카페라테", 2);
 		}
 	}

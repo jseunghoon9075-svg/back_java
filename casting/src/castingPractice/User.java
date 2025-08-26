@@ -5,14 +5,25 @@ public class User {
 	String phone;
 	int money;
 	int point;
+	int discount;
+	
 
 	public User() {;}
 
-	public User(String name, String phone, int money, int point) {
+	public User(String name, String phone, int money, int point, int discount) {
 		this.name = name;
 		this.phone = phone;
 		this.money = money;
 		this.point = point;
+		this.discount = discount;
+	}
+
+	public int getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(int discount) {
+		this.discount = discount;
 	}
 
 	public String getName() {
