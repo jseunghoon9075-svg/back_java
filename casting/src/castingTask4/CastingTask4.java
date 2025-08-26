@@ -10,7 +10,7 @@ public class CastingTask4 {
 		User mb1 = new MarketMember("홍길동","010-1234-5678", 20_000, 2_000);
 		User mb2 = new MarketNonMember("김길동","010-1212-3434", 110_000, 5_000);
 		
-		Product product = new Market();
+		Product product = new Product();
 		Market market = (Market)product;
 		
 		Product[] productArr = new Market[5];
@@ -21,10 +21,6 @@ public class CastingTask4 {
 		marketArr[2] = new Market("카페모카", 5500, 7, 1);
 		marketArr[3] = new Market("아이스티", 5000, 5, 1);
 		marketArr[4] = new Market("홍차", 4000, 10, 1);
-		for(Product markets : marketArr) {
-			System.out.println(markets.getProduct());
-		}
-		
 		market.sell(mb1,"아메리카노",2);
 		
 	}

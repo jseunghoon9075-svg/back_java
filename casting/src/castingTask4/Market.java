@@ -32,10 +32,8 @@ public class Market extends Product{
 	void sell() {
 
 	}
-	@Override
-	void register() {
-	}
-	@Override
+//	void register() {
+//	}
 	void pointEarn() {
 	}
 
