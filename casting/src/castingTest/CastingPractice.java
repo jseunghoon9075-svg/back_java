@@ -8,6 +8,10 @@ class Person{
 		this.speaker = speaker;
 	}
 	
+	void setName(Speaker speaker) {
+		this.speaker = speaker;
+	}
+	
 	void turnOn(Speaker speaker) {
 		System.out.println(speaker.getName() + " 켜졌습니다.");
 	}
@@ -17,6 +21,10 @@ class Speaker extends Person{
 	public Speaker() {;}
 	public Speaker(Speaker speaker,String name) {
 		super(speaker);
+		this.name = name;
+	}
+	
+	void setName(String name) {
 		this.name = name;
 	}
 	String getName() {
