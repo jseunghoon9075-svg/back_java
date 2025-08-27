@@ -15,15 +15,19 @@ public class CastingPractice {
 			User member = new MarketMember("홍길동","010-1234-5678", 10_000, 2_000, 30);
 			MarketMember members = (MarketMember)member;
 			User user = new MarketNonMember("김길동","010-1212-3434", 110_000, 5_000, 5);
+			MarketNonMember users = (MarketNonMember)user;
 			Product[] productArr = {
 					new Product("아메리카노", 2000, 3, 1),
 					new Product("카페라테", 5000, 4, 1),
 					new Product("카페모카", 5500, 7, 1),
 					new Product("아이스티", 5000, 5, 1),
-					new Product("홍차", 4000, 10, 1),
+					new Product("홍차", 400000, 10, 1),
 					};
 			
 			market.register(productArr);
+			System.out.println();
 			market.sell(productArr, member,members,"카페라테", 2);
+			System.out.println();
+			market.sell(productArr, user, users, "홍차", 2);
 		}
 	}
