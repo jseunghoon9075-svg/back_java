@@ -31,6 +31,7 @@ public class AnonymousTask2 {
 				}
 				return new String(result);
 			}
+			
 		};
 		myInter.getString("ABCD");
 		
