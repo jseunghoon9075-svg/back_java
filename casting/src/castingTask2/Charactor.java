@@ -38,9 +38,11 @@ public class Charactor {
 				Oak oak = (Oak) monster;
 				nickName = "홍길동";
 				this.hp = 100;
+				
 
 				if (oak.skill(false)) {
 					oak.skill(oak.skill);
+					
 					System.out.println(nickName + "의 " + this.hp + "Hp 가 20 감소했습니다!!!");
 					
 				} else {
@@ -48,6 +50,7 @@ public class Charactor {
 					monster.diying();
 					monster.drop();
 				}
+				
 			} else if (choice.equals("2")) {
 				if (monster instanceof Faerie) {
 					monster.diying();

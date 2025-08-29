@@ -17,17 +17,32 @@ class Employee {
 		this.income = income;
 		money += this.income;
 	}
-	void printMoney() {
-		System.out.println(money);
+	void printMoney(Employee[] employee) {
+		
+		for(Employee p: employee) {
+			System.out.println(p.name + incomeExcuted(employee));
+			
+		}
+	}
+	
+	int incomeExcuted(Employee[] employee) {
+		int result = 0;
+		for(Employee p: employee) {
+			result += p.income;
+		}
+		return result;
 	}
 }
 //	회사원들이 벌어온 수익을 모두 회사의 돈 에 합치고,
 //	회사의 돈 출력
 public class StaticTask1 {
 	public static void main(String[] args) {
-		Employee one1 = new Employee("홍길동", 20, 35_680);
-		Employee one2 = new Employee("고길동", 30, 55_520);
-		Employee one3 = new Employee("김길동", 25, 15_192);
-		one1.printMoney();
+		Employee employee = new Employee();
+		Employee[] oner = { 
+				new Employee("홍길동", 20, 20000),
+				new Employee("고길동", 30, 55_520),
+				new Employee("김길동", 25, 15_192)
+		};
+		employee.printMoney(oner);
 	}
 }

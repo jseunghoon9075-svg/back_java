@@ -20,6 +20,7 @@ public class CastingTask2 {
 	public static void main(String[] args) {
 		new Charactor().hunting(new Oak());
 		new Charactor().hunting(new Humun());
-		new Charactor().hunting(new Faerie());
+		new Charactor().hunting(new Faerie());2
+		
 	}
 }

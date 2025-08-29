@@ -15,20 +15,20 @@ class Data {
 
 public class StaticTest {
 	public static void main(String[] args) {
-//      Data data1 = new Data();
-//      data1.increase_s();
-//      data1.increase_s();
-//      data1.increase_s();
-//      data1.increase_s();
-//      data1.increase_s();
-//      data1 = new Data();
-//      data1.increase_s();
-//      data1.increase_s();
-//      data1.increase_s();
-//      data1.increase_s();
-//      data1.increase_s();
+      Data data1 = new Data();
+      data1.increase_s();
+      data1.increase_s();
+      data1.increase_s();
+      data1.increase_s();
+      data1.increase_s();
+      data1 = new Data();
+      data1.increase_s();
+      data1.increase_s();
+      data1.increase_s();
+      data1.increase_s();
+      data1.increase_s();
 
-		Data data1 = new Data();
+//		Data data1 = new Data();
 		data1.increase();
 		data1.increase();
 		data1.increase();
