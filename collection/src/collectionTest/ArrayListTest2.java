@@ -1,4 +1,4 @@
-package collection;
+package collectionTest;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ public class ArrayListTest2 {
 		ArrayList<Integer> datas = new ArrayList<Integer>();
 		ArrayListTest2 arrList = new ArrayListTest2();
 		arrList.addArray(datas, 300);
-		for(int i = 0; i < 2000; i += 100) {
+		for(int i = 0; i < 100; i += 10) {
 			arrList.addArray(datas, i);
 		}
 		
@@ -54,7 +54,6 @@ public class ArrayListTest2 {
 			e.getMessage();
 		}
 		
-		arrList.setArray(datas, 1500, 10);
 		
 		try {
 			if(datas.contains(90)) {
