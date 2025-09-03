@@ -1,11 +1,28 @@
 package collectionTest.arrayList2;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Properties;
+import java.util.Scanner;
+
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.Multipart;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMessage.RecipientType;
+import javax.mail.internet.MimeMultipart;
 
 public class UserField {
 //	DB
 	public ArrayList<User> users = DBconnecter.users;
 	public static String userId;
+	public static String code;
 //	상수는 대문자로 표기한다
 	final int KEY = 300;
 
@@ -61,65 +78,181 @@ public class UserField {
 		return encode;
 	}
 
+//	수정하는 메서드로 변경 (비밀번호변경)
+	public void update(User user) {
+//		DB에 해당유저의 id가 있는지 검사
+		User userInDb = checkId(user.getId());
+		if(userInDb != null) {
+			userInDb.setPassword(encoding(user.getPassword()));
+		}
+	}
+	
 //	비밀번호 변경(마이페이지)
-	public void changePasswordMyPage(User user, String password) {
-		User change = null;
-//	유저를 받고 입력한 비밀번호를 인코딩 후 현재 유저의 비밀번호와 같은지 검사
-		try {
-			if ((encoding(password).equals(user.getPassword()))) {
-//			같으면 false -> 같은 비밀번호로 변경 불가
-				System.out.println("현재와 같은 비밀번호로 변경 불가 합니다");
-			} else
-//	다르면 true -> 다르면 입력한 비밀번호를 db에 해당유저의 비밀번호 수정
-				change = user;
-//			setter이용해 값을 수정하는데 인코딩을 해줘야함
-			change.setPassword(encoding(password));
-//			DB에 데이터 수정! .set을 이용하고 리스트에 변경된 유저를 준다
-			if (users.contains(change)) {
-				users.set(users.indexOf(change), change);
-			}
-		} catch (NullPointerException e) {
-			System.out.println("현재와 비밀번호와 다른 비밀번호로 입력하세요.");
-		} catch (Exception e) {
-			e.getMessage();
+//	public void changePasswordMyPage(User user, String password) {
+////		변경값을 넣어줄 변수 선언
+//		User change = null;
+//		try {
+////			유저를 받고 입력한 비밀번호를 인코딩 후 현재 유저의 비밀번호와 같은지 검사
+//			if ((encoding(password).equals(user.getPassword()))) {
+////			같으면 false -> 같은 비밀번호로 변경 불가
+//				System.out.println("현재와 같은 비밀번호로 변경 불가 합니다");
+//			} else
+////			다르면 true -> 다르면 입력한 비밀번호를 db에 해당유저의 비밀번호 수정
+////			기존 유저데이터를 생성한 변수에 넣어줌
+//				change = user;
+////			setter이용해 값을 수정하는데 인코딩을 해줘야함
+//			change.setPassword(encoding(password));
+////			DB에 데이터 수정! .set을 이용하고 리스트에 변경된 유저를 준다
+////				생성한 변수를 기존값에 덮어씌운다
+//			users.set(users.indexOf(change), change);
+//		} catch (NullPointerException e) {
+//			System.out.println("현재 비밀번호와 다른 비밀번호로 입력하세요.");
+//		} catch (Exception e) {
+//			e.getMessage();
+//		}
+//	}
+
+//	비밀번호 변경(비밀번호 변경 30일)
+	public void changePassword30Days(String newPassword) {
+//	조건 1. 로그인이 된 바로 직후
+		User userInDb = checkId(userId);
+//	로그인 후 db에 저장된 해당 유저의 비밀번호가 저장된 지 30일이 지났다면 
+//	"비밀번호가 변경 된 지 30일이 지났습니다!\n변경 하시겠습니까??" 출력
+//	이후 비밀번호 변경(마이페이지)의 메서드 사용
+		if(userInDb != null) {
+			userInDb.setPassword(encoding(newPassword));
 		}
 	}
 
-//	Product foundProduct = null;
-//  for(Product product: products) {
-//     if(product.getId() == 3L) {
-//        foundProduct = product;
-//     }
-//  }
-//  foundProduct.setPrice(100000);
-//  
-//  try {
-//     if(products.contains(foundProduct)) {
-//        products.set(products.indexOf(foundProduct), foundProduct);
-//     }
-
-//	비밀번호 변경(비밀번호 변경 30일)
-//	조건 1. 로그인이 된 바로 직후
-//	로그인 후 db에 저장된 해당 유저의 비밀번호가 30일이 지났다면 "비밀번호가 변경 된 지 30일이 지났습니다!\n변경 하시겠습니까??" 출력
-//	이후 비밀번호 변경(마이페이지)의 메서드 사용
-
-//	인증번호 전송
 //	인증번호 생성
-//	인증번호 확인
-
-	public static void main(String[] args) {
-		User user = new User("1", "전승훈", "123456", "01012345678");
-		UserField userField = new UserField();
-		user.setPassword(userField.encoding(user.getPassword()));
-		userField.join(user);
-		System.out.println(userField.checkId("1"));
-		System.out.println(userField.login(user));
-		userField.changePasswordMyPage(user, "123456");
-
-		System.out.println(userField.checkId("1"));
-//		리스트 출력하려면 리스트 선언부에 static을 붙혀라 나오는데 왜 안붙힌건지 여쭤보기
-//		System.out.println(users);
-
+	public String randomNumber() {
+		String code = "";
+		for (int i = 0; i < 6; i++) {
+			code += (int) (Math.random() * 10);
+			this.code = code;
+		}
+		return code;
 	}
 
+//	인증번호 전송
+	public void sendEmail(String toMemberEmail) {
+		final String bodyEncoding = "UTF-8"; // 콘텐츠 인코딩
+
+		// 원하는 메일 제목 작성
+		String subject = "메일 전송 테스트";
+
+		// 보낸 이메일 작성
+		String fromEmail = "jhing9075@gmail.com";
+		String fromUsername = "승훈";
+
+		String toEmail = toMemberEmail; // 콤마(,)로 여러개 나열
+
+		// 도메인 사용할 필요 없다
+		// 앱비밀번호
+		final String username = "jhing9075@gmail.com";
+		final String password = "uqwe ymbs vxld wokm";
+
+		this.randomNumber();
+
+		// 메일에 출력할 텍스트
+		String html = null;
+		StringBuffer sb = new StringBuffer();
+		sb.append("<h3>인증번호 발송</h3>\n");
+		sb.append("<h4>[인증번호6자리]</h4>");
+		sb.append("<h4>" + code + "</h4>");
+		sb.append("<h4>테스트 발송!</h4>");
+		html = sb.toString();
+
+		// 메일 옵션 설정
+		Properties props = new Properties();
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.port", "587");
+		props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+		props.put("mail.smtp.ssl.protocols", "TLSv1.2");
+
+		try {
+			// 메일 서버 인증 계정 설정
+			Authenticator auth = new Authenticator() {
+				protected PasswordAuthentication getPasswordAuthentication() {
+					return new PasswordAuthentication(username, password);
+				}
+			};
+
+			// 메일 세션 생성
+			Session session = Session.getDefaultInstance(props, auth);
+
+			// 메일 송/수신 옵션 설정
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(fromEmail, fromUsername));
+			message.setRecipients(RecipientType.TO, InternetAddress.parse(toEmail, false));
+			message.setSubject(subject);
+			message.setSentDate(new Date());
+
+//          // 메일 콘텐츠 설정
+			Multipart mParts = new MimeMultipart();
+			MimeBodyPart mTextPart = new MimeBodyPart();
+			MimeBodyPart mFilePart = null;
+			//
+//          // 메일 콘텐츠 - 내용
+			mTextPart.setText(html, bodyEncoding, "html");
+			mParts.addBodyPart(mTextPart);
+//                
+//          // 메일 콘텐츠 설정
+			message.setContent(mParts);
+
+			// 메일 발송
+			Transport.send(message);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+//	인증번호 확인
+//	사용자의 입력값과 this.code가 같은지 검사
+	public boolean checkCode(String inputCode) {
+		return this.code.equals(inputCode);
+	}
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String inputCode = null, message = "인증번호를 입력하세요";
+		int errorCount = 0;
+		User user = new User("1", "전승훈", "123456", "01012345678");
+		
+		UserField userField = new UserField();
+		userField.join(user);
+		System.out.println(DBconnecter.users);
+		System.out.println(userField.checkId("1"));
+		System.out.println(userField.login(user));
+		userField.update(user);
+		userField.changePassword30Days("123");
+
+		System.out.println(userField.checkId("1"));
+//		userField.sendEmail("jhing9075@gmail.com");
+//		System.out.println(code);
+//      이메일 인증번호 확인
+
+//		do {
+//			if (errorCount == 0) {
+//				System.out.println(message);
+//				inputCode = sc.nextLine().trim();
+//			}else if(errorCount > 0 && errorCount < 3) {
+//				System.out.println("다시입력하세요");
+//				inputCode = sc.nextLine().trim();
+//			}else if(errorCount > 3){
+//				System.out.println("처음부터 다시 입력하세요");
+//				break;
+//			}
+//			errorCount++;
+//		} while (!userField.checkCode(inputCode));
+//		
+//		if(userField.checkCode(inputCode)) {
+//			System.out.println("인증이 완료되었습니다.");
+//		}else {
+//			System.out.println("인증 실패");
+//		}
+	}
 }

@@ -1,5 +1,6 @@
 package collectionTest.arrayList2;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 // 이 클래스는 db의 값을 담기위한 클래스이다 용도가 분명하다
@@ -8,6 +9,7 @@ public class User {
 	private String name;
 	private String password;
 	private String phone;
+	private LocalDate createTime;
 	
 	public User() {;}
 
@@ -17,6 +19,24 @@ public class User {
 		this.password = password;
 		this.phone = phone;
 	}
+	
+	public User(String id, String name, String password, String phone, LocalDate createTime) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.password = password;
+		this.phone = phone;
+		this.createTime = createTime;
+	}
+
+	public LocalDate getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(LocalDate createTime) {
+		this.createTime = createTime;
+	}
+
 
 	public String getId() {
 		return id;
