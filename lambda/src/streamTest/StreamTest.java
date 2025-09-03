@@ -1,7 +1,10 @@
 package streamTest;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class StreamTest {
 	public static void main(String[] args) {
@@ -22,9 +25,12 @@ public class StreamTest {
 //		
 //		.StreamTest(): 컬렉션을 Stream 객체로 변경
 //		.chars(): 문자열을 Stream 객체로 변경		
-		datas.forEach((b) -> {
-			System.out.println(b);
-			
-		});
+//		datas.stream().filter(i -> i % 2 == 0).forEach(System.out::println);
+		
+		Stream<Integer> newData = datas.stream().map(i -> i * 10).filter(i -> i % 3 == 0 && i > 0);
+		List<Integer> listData = newData.toList();
+		
+		
+		System.out.println(listData);
 	}
 }
