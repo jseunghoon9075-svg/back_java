@@ -67,7 +67,11 @@ public class MyMath {
 		num1 = Integer.parseInt(numbers[0]);
 		System.out.println(num1);
 		for (int i = 0; i < strArr.size(); i++) {
-				System.out.println(calculater(strArr.get(i)).calc(num1, Integer.parseInt(numbers[i + 1])));
+			calculater(strArr.get(i)).calc(num1, Integer.parseInt(numbers[i + 1]));
+			if(numbers.length >= 1) {
+				calculater(strArr.get(i)).calc(num1, Integer.parseInt(numbers[1 * i]));
+				
+			}
 		}
 	}
 	

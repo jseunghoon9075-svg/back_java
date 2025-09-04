@@ -1,36 +1,28 @@
 package streamTest;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.stream.Collectors;
 
 public class StreamTest {
 	public static void main(String[] args) {
-//		
-		ArrayList<Integer> datas = new ArrayList<Integer>();
-//		.range(시작, 끝) : 마지막을 포함하지않는다.
-//		.rangeClosed : 마지막을 포함한다.
-		IntStream.rangeClosed(0, 10).forEach((n) -> {
-			datas.add(n);
-		});
-
-//		참조형 문법
-//		.(소속::메서드명)
-//		ex) .(System.out::print)
-//		IntStream.rangeClosed(1, 5).forEach((n) -> {
-//			datas.add(n);
-//		});
-//		
-//		.StreamTest(): 컬렉션을 Stream 객체로 변경
-//		.chars(): 문자열을 Stream 객체로 변경		
-//		datas.stream().filter(i -> i % 2 == 0).forEach(System.out::println);
+//	.sorted(): 정렬
+//		ArrayList<Integer> numbers = new ArrayList<Integer>(Arrays.asList(1, 24,1 ,4, 21, 5));
 		
-		Stream<Integer> newData = datas.stream().map(i -> i * 10).filter(i -> i % 3 == 0 && i > 0);
-		List<Integer> listData = newData.toList();
+//		numbers.stream().sorted().forEach(System.out::print);;
+//		numbers.stream().sorted(Collections.reverseOrder()).forEach(System.out::print);;
 		
 		
-		System.out.println(listData);
+//	.collect(): 결과를 다양한 타입으로 리턴 --- (Collectors.toCollection(Collection:: )
+		ArrayList<Integer> numbers2 = new ArrayList<Integer>(Arrays.asList(1, 24,1 ,4, 21, 5));
+//		List<Integer> numbers3 = numbers2.stream().map((n) -> n * 10).collect(Collectors.toList());
+		String newString = numbers2.stream().map((n) -> n * 10).map(String::valueOf)
+				.collect(Collectors.joining(","));
+		
+		System.out.println(newString);
+		
 	}
+	
+	
 }
