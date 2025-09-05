@@ -55,9 +55,8 @@ public class StreamTask1 {
 		han.put("팔", 8);
 		han.put("구", 9);
 //		"공칠이삼".chars().mapToObj(c -> String.valueOf((char)c)).map(han::get).forEach(System.out::print);
-		
 //		8. 정수를 한글로 변경 0723 -> "공칠이삼"
-		ArrayList<Integer> num = new ArrayList<Integer>(Arrays.asList(0, 7, 2, 3));
-		num.stream().mapToInt(c -> ((char)(int)c)).map(c -> num.get(c)).forEach(System.out::print);
+//		ArrayList<Integer> num = new ArrayList<Integer>(Arrays.asList(0, 7, 2, 3));
+//		num.stream().mapToInt(c -> ((char)(int)c)).map(c -> num.get(c)).forEach(System.out::print);
 	}
 }
