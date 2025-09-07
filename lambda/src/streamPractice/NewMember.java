@@ -1,9 +1,11 @@
-package streamTask;
+package streamPractice;
 
 import java.util.Objects;
 
-public class Member {
-	public Long id;
+import streamTask.Member;
+
+public class NewMember {
+	private Long id;
 	private String name;
 	private String hobby;
 	private String introduce;
@@ -19,9 +21,9 @@ public class Member {
 		this.id = seq++;
 	}
 	
-	public Member() {;}
+	public NewMember() {;}
 
-	public Member(String name, String hobby, String introduce) {
+	public NewMember(String name, String hobby, String introduce) {
 		this.name = name;
 		this.hobby = hobby;
 		this.introduce = introduce;
@@ -80,6 +82,4 @@ public class Member {
 		Member other = (Member) obj;
 		return Objects.equals(id, other.id);
 	}
-
-	
 }

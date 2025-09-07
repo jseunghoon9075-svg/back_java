@@ -34,6 +34,6 @@ public class StreamTask5 {
 		hobby2.stream().map(i -> i.split(",")).forEach(i -> 
 		System.out.println(String.valueOf(i)));
 		
-		System.out.println(hobby2);
+		System.out.println(hobbys);
 	}
 }
