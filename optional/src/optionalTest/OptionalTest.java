@@ -7,10 +7,10 @@ import java.util.Optional;
 public class OptionalTest {
 
 	ArrayList<User> users = new ArrayList<User>(Arrays.asList(
-			new User("전승훈", "jhing", "1234"),
+			new User("박길동", "pgd", "1234"),
 			new User("홍길동", "hgd", "1234"), 
-			new User("고길동", "gkd", "1234"), 
-			new User("김길동", "kkd", "1234")
+			new User("고길동", "ggd", "1234"), 
+			new User("김길동", "kgd", "1234")
 			));
 
 	public Optional<User> findById(Long id) {
@@ -34,7 +34,6 @@ public class OptionalTest {
 //		실무에서 가장 많이 쓰이는 null처리
 //		user가 null이 아니면, 통째로가 user
 //		null이면 throw
-		
 		try {
 			User user = foundUser.orElseThrow(() -> {
 //			개발자가 재정의한 Exception 클래스를 만들어 throw를 날려준다
