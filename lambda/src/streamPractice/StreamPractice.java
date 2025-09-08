@@ -18,6 +18,7 @@ public class StreamPractice {
 	public static void main(String[] args) {
 		ArrayList<NewMember> members = new ArrayList<NewMember>();
 
+		
 		NewMember member1 = new NewMember("홍길동", "축구_농구_야구", "나는 축구왕!");
 		NewMember member2 = new NewMember("이순신", "개발_당구_축구", "나는 개발자 좋아!");
 		NewMember member3 = new NewMember("장보고", "피아노", "피아노만 한 우물!");
