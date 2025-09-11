@@ -27,3 +27,19 @@ public class StreamTask2 {
          .sum(); // int
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
