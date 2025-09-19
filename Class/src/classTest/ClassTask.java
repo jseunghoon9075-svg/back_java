@@ -7,7 +7,6 @@ package classTest;
 // 기본생성자, 초기화 생성자
 // 객체화, 생성자
 
-
 //	추상화
 public class ClassTask {
 //	필드
@@ -24,6 +23,7 @@ public class ClassTask {
 		this.age = age;
 		this.feed = feed;
 	}
+	
 	public static void main(String[] args) {
 //		객체화					생성자
 		ClassTask animal1 = new ClassTask("야옹", 25, "츄르");

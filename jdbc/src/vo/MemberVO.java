@@ -10,13 +10,9 @@ public class MemberVO {
 	private Integer memberAge;
 	private String memberAddress;
 
-	public MemberVO() {
-		;
-	}
-
+	public MemberVO() {;}
 	public MemberVO(Long id, String memberEmail, String memberPassword, String memberName, Integer memberAge,
 			String memberAddress) {
-		super();
 		this.id = id;
 		this.memberEmail = memberEmail;
 		this.memberPassword = memberPassword;
