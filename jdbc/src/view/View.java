@@ -28,6 +28,5 @@ public class View {
 //		Optional<MemberVO> foundMember = memberDAO.findById();
 //		foundMember.ifPresent(System.out::println);
 //		MemberVO member = foundMember.orElseThrow();		
-		memberDAO.deleteMember(memberVO);
 	}
 }
