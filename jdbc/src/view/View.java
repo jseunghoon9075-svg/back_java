@@ -22,7 +22,7 @@ public class View {
 		if(memberDAO.login(memberVO)) {
 			System.out.println("로그인 성공");
 		} else {
-			System.out.println("로그인 실패");
+			System.out.println("로그인 실패 다시하거라!");
 		}
 		
 //		Optional<MemberVO> foundMember = memberDAO.findById();
